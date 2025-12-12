@@ -1,0 +1,47 @@
+#Unsupervised Learning (Clustering)
+
+# Unveling Data Insights
+
+(1) K-Mean Clustering
+(2) Elbow Method
+(3) Principle Component Analysys
+(4) Dimentionality Reduction
+(5) Cluster Visualization
+
+(1) K-Means Clustering
+K-Means is an unsupervised machine learning algorithm that groups similar data points into clusters based on their features.
+It assigns data points to clusters such that points in the same cluster are closer to each other than to those in other clusters.
+The algorithm identifies the center (mean) of each cluster and updates it until the clusters stabilize.
+In short, it automatically groups similar data points together.
+
+Steps of K-Means Clustering:
+1. Choose the number of clusters (k) (for example, k=3 means 3 groups).
+2. Randomly place k initial points (centroids).
+3. Assign each data point to the nearest centroid (forming clusters).
+4. Recalculate the centroids (means of the clusters).
+5. Repeat steps 3 and 4 until the centroids no longer move significantly (convergence).
+
+(2) Elbow Method
+Sometimes we do not know the right number of clusters (k) for our dataset.
+The Elbow Method helps determine the optimal number of clusters.
+It works by plotting the Within-Cluster Sum of Squares (WCSS) against the number of clusters.
+The point where the curve bends (like an elbow) is considered the best value for k.
+
+(3) Principal Component Analysis (PCA)
+PCA is a dimensionality reduction technique used when a dataset has many features (columns).
+It summarizes the dataset by transforming it into fewer new features called principal components while retaining most of the important information.
+PCA simplifies analysis and visualization without losing significant data patterns.
+
+Problems without PCA:
+1. Model training becomes slow due to too many features.
+2. Visualization is difficult when there are multiple dimensions.
+3. High risk of overfitting due to redundant or irrelevant features.
+
+(4) Dimensionality Reduction
+Dimensionality Reduction means reducing the number of features (dimensions) in the dataset while preserving as much important information as possible.
+
+Benefits:
+1. Simplifies the dataset
+2. Reduces noise
+3. Speeds up computation
+4. Makes visualization easier
