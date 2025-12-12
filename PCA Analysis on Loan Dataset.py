@@ -5,21 +5,27 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
-print("Letse see the All the details of the Datasets......\n")
-df = pd.read_csv("loan.csv")
-df.head()
+try:
+    print("Letse see the All the details of the Datasets......\n")
+    df = pd.read_csv("DataSheet/loan.csv")
+    df.head()
+except Exception as e:
+    print(f"Error is {e}")
 
 print("Let see there is any Null values are present or not into the datasets.........\n")
 df.isnull().sum()
 
-print("Letse Remove all the null values into this datasets........\n")
-l1=['Gender','Married','Dependents','Self_Employed']
-l2=['LoanAmount','Loan_Amount_Term','Credit_History']
+try:
+    print("Letse Remove all the null values into this datasets........\n")
+    l1=['Gender','Married','Dependents','Self_Employed']
+    l2=['LoanAmount','Loan_Amount_Term','Credit_History']
 
-for i in l1:
-    df[i] = df[i].fillna(df[i].mode()[0])
-for j in l2:
-    df[j]= df[j].fillna(df[j].mean())
+    for i in l1:
+        df[i] = df[i].fillna(df[i].mode()[0])
+    for j in l2:
+        df[j]= df[j].fillna(df[j].mean())
+except Exception as e:
+    print(f"Error {e}")
 
 print("Letse Again check there is any null values are present or not.........\n")
 df.isnull().sum()
@@ -27,21 +33,24 @@ df.isnull().sum()
 print("Lets Descrive the all the column of the datsets...........\n")
 df.describe(include='all')
 
-print("Lets Rescall the requered Columsn into the datsets.........\n")
-scaler = StandardScaler()
-x = df[['ApplicantIncome','CoapplicantIncome','LoanAmount','Loan_Amount_Term','Credit_History']]
+try:
+    print("Lets Rescall the requered Columsn into the datsets.........\n")
+    scaler = StandardScaler()
+    x = df[['ApplicantIncome','CoapplicantIncome','LoanAmount','Loan_Amount_Term','Credit_History']]
 
-new_df = scaler.fit_transform(x)
-pca = PCA(n_components=5)
+    new_df = scaler.fit_transform(x)
+    pca = PCA(n_components=5)
 
-ndf = pca.fit_transform(new_df)
+    ndf = pca.fit_transform(new_df)
 
-nndf = pd.DataFrame(ndf,columns=['PCA1','PCA2','PCA3','PCA4','PCA5'])
+    nndf = pd.DataFrame(ndf,columns=['PCA1','PCA2','PCA3','PCA4','PCA5'])
 
-variance = pca.explained_variance_ratio_
+    variance = pca.explained_variance_ratio_
 
-print("The variance of this data is:")
-print(np.round(variance*100,2))
+    print("The variance of this data is:")
+    print(np.round(variance*100,2))
+except Exception as e:
+    print(f"Error {e}.")
 
 print("Lets see the PCA Analysis for this Datsets.........\n")
 
@@ -57,7 +66,7 @@ plt.xlabel("PCA Component (X-axis)")
 plt.ylabel("PCA Component (Y-axis)")
 plt.legend(loc='upper left')
 plt.grid(True)
-plt.savefig("PCA_Analysys.png", dpi=500, bbox_inches='tight')
+plt.savefig("Diagram_images/PCA_Analysys.png", dpi=500, bbox_inches='tight')
 plt.show()
 
 
@@ -66,6 +75,5 @@ print("")
 l1 = ['PCA1','PCA2','PCA3','PCA4','PCA5']
 values=np.round(variance*100,2)
 plt.pie(values,labels=l1,autopct="%1.1f%%",startangle=90)
-plt.title("PCA Analysys")
+plt.title("Diagram_images/PCA Analysys")
 plt.show()
-
